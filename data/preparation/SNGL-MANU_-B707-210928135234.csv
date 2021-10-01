@@ -1,0 +1,18 @@
+Type,LA-7500
+Version,2.0.0
+Make Time,'21/09/28 13:52:34
+Operate Mode,Single   
+Memory Mode,Manual      
+Meas Time,'000:00:10.0,,,'000:00:10.0
+Period Time,'000:00:00.0,,,'000:00:00.0
+Total Time,'000:00:00.0,,,'000:00:10.0
+LN Setting,L01,L99,,L01,L99
+Level Range, 40-110dB,,, 40-110dB
+Wind Screen,OFF    ,,,OFF    
+Extension Cable,Direct,,,Direct
+,MAIN/SUB,MAIN
+,Freq Weight,A,,A
+,Time Weight,F   ,,F   
+Meas Date,Elapsed Time,Lp   ,Judge,Leq  ,LE   ,Lmax ,Lmin ,Lpeak,L05  ,L10  ,L50  ,L90  ,L95  ,L01  ,L99  ,LHi  ,LLo  ,LAve ,Judge
+'21/09/28 13:52:34,,+027.24,UD
+'21/09/28 13:52:21,'000:00:10.0,,,+027.30,+037.30,+035.30,+025.77,+049.03,+028.80,+027.10,+026.60,+026.20,+026.10,+034.90,+026.00,+034.90,+025.90,+027.21,UD
