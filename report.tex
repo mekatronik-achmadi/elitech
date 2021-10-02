@@ -142,8 +142,20 @@
 			\centering
 			\includegraphics[width=200pt]{images/calibrator}
 			\caption{Calibrator}
-		\end{figure}	
-\end{itemize} 
+		\end{figure}
+	
+		\item SLM Onnosokki sebagai pembanding dalam pengukuran latar.
+		SLM telah terkalibrasi dan telah dicek dengan kalibrator.
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=200pt]{images/slm_calib}
+			\caption{SLM Onnosokki}
+		\end{figure}
+		
+		Untuk selanjutnya paket instrumen ini disebut SLM saja.
+		
+	\end{itemize} 
 	
 	\subsection{Kalibrasi}
 	
@@ -160,7 +172,8 @@
 			\item Untuk sistem operasi GNU/Linux, pastikan input Pulseaudio adalah EARS (bukan internal mic)
 			\item Nyalakan software DSSF3, pilih FFT Analyzer
 			\item Untuk sistem operasi Windows, pilihan input akan tampil disini (pilih EARS).	
-	\end{enumerate}
+		\end{enumerate}
+		\newpage
 		\item Klik \textbf{Calibration} untuk menampilkan jendela kalibrasi.
 		Pilih \textbf{Separate} untuk kalirasi sisi kanan dan kiri.
 		\begin{figure}[!ht]
@@ -171,10 +184,10 @@
 		\item Masukkan microphone ke kalibrator.
 		\begin{figure}[!ht]
 			\centering
-			\begin{subfigure}[b]{0.25\textwidth}
+			\begin{subfigure}[b]{0.2\textwidth}
 				\includegraphics[width=\textwidth]{images/ears_calib0}
 			\end{subfigure}
-			\begin{subfigure}[b]{0.25\textwidth}
+			\begin{subfigure}[b]{0.2\textwidth}
 				\includegraphics[width=\textwidth]{images/ears_calib1}
 			\end{subfigure}
 			\caption{Kalibrasi EARS}
@@ -189,5 +202,16 @@
 	Menyusul
 	
 	\subsection{Pengukuran latar}
+	
+	Pengukuran latar dilakukan di kedua paket instrumen dan dibandingkan dengan hasil ukur SLM.
+	
+	\subsubsection{EARS}
+	
+	Hasil pengukuran SLM menunjukkan kondisi loudness latar berkisar pada 25 dB.
+	File CSV pengukuran selama 10 detik dapat dilihat disini:
+	\begin{itemize}
+		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B706-210928132100.csv}
+		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B707-210928135234.csv}
+	\end{itemize}
 	
 \end{document}
