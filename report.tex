@@ -90,5 +90,104 @@
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
+	\newpage
+	\section{Pendahuluan}
+	
+	\subsection{Tujuan}
+	
+	Tujuan kegiatan pengukuran ini meliputi:
+	\begin{itemize}
+		\item Mengetahui nilai dB SPL untuk Elitech Speech Test menggunakan Headphone
+		\item Mengetahui nilai dB SPL untuk Elitech Wishper Test menggunakan Headphone
+		\item Mengetahui nilai dB SPL untuk Elitech Speech Test menggunakan Speaker
+		\item Mengetahui nilai dB SPL untuk Elitech Wishper Test menggunakan Speaker
+	\end{itemize}
+	
+	\subsection{Waktu dan Tempat}
+	
+	Seluruh kegiatan dilakukan di Ruang Semi-Unechoic Laboratorium Vibrasi dan Akustik
+	Departemen Teknik Fisika Institut Teknologi Sepuluh Nopember Surabaya.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\newpage
+	\section{Persiapan}
+	
+	Kegiatan persiapan disini meliputi:
+	\begin{itemize}
+		\item Kalibrasi instrumen ukur.
+		\item Pengukuran audio latar ruangan.
+	\end{itemize}
+
+	Instrumen yang digunakan meliputi:
+	\begin{itemize}
+		\item miniDSP EARS, berupa replika telinga karet dengan mikrofon, box DSP, dan antarmuka USB.
+		Website produk:\\
+		\url{https://www.minidsp.com/products/acoustic-measurement/ears-headphone-jig}
+		
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=200pt]{images/ears}
+			\caption{miniDSP EARS}
+		\end{figure}
+	
+		Untuk selanjutnya, paket intrumen ini disebut EARS saja.
+		
+		\item Focusrite dan Microphone (menyusul)
+		
+		Untuk selanjutnya paket instrumen ini disebut Mic saja
+		
+		\item Pistonphone Calibrator IEC942 dengan frekuensi 1000Hz dan loudness 114dB SPL sebagai acuan kalibrasi.
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=200pt]{images/calibrator}
+			\caption{Calibrator}
+		\end{figure}	
+\end{itemize} 
+	
+	\subsection{Kalibrasi}
+	
+	Proses kalibrasi dilakukan untuk dua paket intrumen, yaitu EARS dan Mic.
+	
+	\subsubsection{EARS}
+	
+	Langkah kalibrasi EARS meliputi:
+	\begin{enumerate}
+		\item Lepas semua telinga karet sehingga internal microphone bisa ter-\textit{expose}
+		\item Pastikan semua switch diatur untuk gain 0dB.
+		\item Sambungkan USB ke laptop.
+		\begin{enumerate}
+			\item Untuk sistem operasi GNU/Linux, pastikan input Pulseaudio adalah EARS (bukan internal mic)
+			\item Nyalakan software DSSF3, pilih FFT Analyzer
+			\item Untuk sistem operasi Windows, pilihan input akan tampil disini (pilih EARS).	
+	\end{enumerate}
+		\item Klik \textbf{Calibration} untuk menampilkan jendela kalibrasi.
+		Pilih \textbf{Separate} untuk kalirasi sisi kanan dan kiri.
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=200pt]{images/kalib}
+			\caption{Jendela Kalibrasi}
+		\end{figure}
+		\item Masukkan microphone ke kalibrator.
+		\begin{figure}[!ht]
+			\centering
+			\begin{subfigure}[b]{0.25\textwidth}
+				\includegraphics[width=\textwidth]{images/ears_calib0}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.25\textwidth}
+				\includegraphics[width=\textwidth]{images/ears_calib1}
+			\end{subfigure}
+			\caption{Kalibrasi EARS}
+		\end{figure}
+		\item Geser slider kalibrasi hingga menunjukkan angka 114dB
+		\item Ulangi untuk microphone di sisi lainnya.
+		\item Beri nama pada \textbf{Microphone Info} dan klik \textbf{New} untuk menyimpan.
+	\end{enumerate}
+
+	\subsubsection{Mic}
+	
+	Menyusul
+	
+	\subsection{Pengukuran latar}
 	
 \end{document}
