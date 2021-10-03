@@ -115,6 +115,7 @@
 	
 	Kegiatan persiapan disini meliputi:
 	\begin{itemize}
+		\item Modifikasi file Audio.
 		\item Kalibrasi instrumen ukur.
 		\item Pengukuran audio latar ruangan.
 	\end{itemize}
@@ -140,22 +141,75 @@
 		\item Pistonphone Calibrator IEC942 dengan frekuensi 1000Hz dan loudness 114dB SPL sebagai acuan kalibrasi.
 		\begin{figure}[!ht]
 			\centering
-			\includegraphics[width=200pt]{images/calibrator}
+			\includegraphics[width=150pt]{images/calibrator}
 			\caption{Calibrator}
 		\end{figure}
 	
 		\item SLM Onnosokki sebagai pembanding dalam pengukuran latar.
 		SLM telah terkalibrasi dan telah dicek dengan kalibrator.
+		Untuk selanjutnya paket instrumen ini disebut SLM saja.
 		
+		\newpage
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150pt]{images/slm_calib}
 			\caption{SLM Onnosokki}
 		\end{figure}
 		
-		Untuk selanjutnya paket instrumen ini disebut SLM saja.
-		
 	\end{itemize} 
+
+	\subsection{File Audio}
+	
+	Dalam SDCard yang terinstal di unit prototype, tersedia 20 file audio MP3 dengan pembagian:
+	\begin{itemize}
+		\item File nomor 01 hingga 10 untuk Speech Test.
+		\item File nomor 11 hingga 20 untuk Wishper Test.
+	\end{itemize}
+
+	Dipilih file 01 dan 11.
+	Kemudian kedua file tersebut dibuang \textit{silence} di antara 5 kata pertama.
+	Selanjutnya sisa \textit{track} dibuang.
+	Tujuannya adalah untuk bisa diputar \textit{looping} dengan meminimumkan \textit{silence}.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=250pt]{images/elitech_testAudioSpeech}
+		\caption{Track Audio untuk Speech}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=250pt]{images/elitech_testAudioWhisperOri}
+		\caption{Track Audio untuk Whisper}
+	\end{figure}
+	
+	\newpage
+	Perlu diketahui bahwa Audio Whisper memiliki level bit sangat rendah mendekati silence.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=250pt]{images/elitech_testAudioWhisper}
+		\caption{Track Audio untuk Whisper (Zoomed)}
+	\end{figure}
+
+	Kemudian melihat analisa frekuensi:
+	
+	\begin{figure}[!ht]
+		\centering
+		\begin{subfigure}[b]{0.3\textwidth}
+			\includegraphics[width=\textwidth]{images/elitech_testAudioSpeechFreq}
+			\caption{Speech}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\includegraphics[width=\textwidth]{images/elitech_testAudioWhisperFreq}
+			\caption{Whisper}
+		\end{subfigure}
+		\caption{Analisa Frekuensi}
+	\end{figure}
+
+	Disini diambil rentang \textit{upper-frequency} adalah 12500 Hz,
+	sedangkan untuk frekuensi rendah diambil semua namun dengan pembobotan \textbf{A-Weighting}
+	untuk mengurangi derau yang umumnya berada di frekuensi rendah.
 	
 	\subsection{Kalibrasi}
 	
@@ -173,6 +227,7 @@
 			\item Nyalakan software DSSF3, pilih FFT Analyzer
 			\item Untuk sistem operasi Windows, pilihan input akan tampil disini (pilih EARS).	
 		\end{enumerate}
+		\newpage
 		\item Klik \textbf{Calibration} untuk menampilkan jendela kalibrasi.
 		Pilih \textbf{Separate} untuk kalirasi sisi kanan dan kiri.
 		\begin{figure}[!ht]
@@ -180,7 +235,6 @@
 			\includegraphics[width=200pt]{images/kalib}
 			\caption{Jendela Kalibrasi}
 		\end{figure}
-		\newpage
 		\item Masukkan microphone ke kalibrator.
 		\begin{figure}[!ht]
 			\centering
@@ -213,14 +267,14 @@
 		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B706-210928132100.csv}
 		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B707-210928135234.csv}
 	\end{itemize}
-
+	
+	\newpage
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=125pt]{images/slm_latar}
 		\caption{Pengukuran Latar dengan SLM}
 	\end{figure}
 
-	\newpage
 	Sedangkan untuk EARS digunakan fitur \textbf{Record} pada FFT Analyzer di 1/3 Octave Band
 	dalam durasi 30 detik dengan interval 1 detik setiap sampling.
 	
