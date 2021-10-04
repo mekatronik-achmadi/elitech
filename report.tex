@@ -287,4 +287,67 @@
 	File CSV hasil pengukuran dapat dilihat di tautan:
 	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/EARS_Background.csv}
 	
+	\subsubsection{Perbandingan Hasil SLM-EARS}
+	
+	Dengan memperhatikan antara hasil \textit{record} EARS dan SLM,
+	terlihat perbedaan nilai antara pembacaan SLM dan nilai akumulasi frekuensi (ALL).
+	Hal ini disebabkan nilai frekuensi ALL adalah nilai log dari jumlah anti-log setiap spektrum frekuensi.
+	Dalam ekspresi matematis:
+	
+	\[L_{sum} = \log (\sum 10^{L_i/10}) \]
+	
+	dengan \(L_i\) sebagai nilai dB SPL setiap spektrum frekuensi.
+	
+	Untuk mempermudah perhitungan, digunakan fungsi Python Numpy.
+	
+	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
+def SplAll(dataIn):
+	freqSum = 0
+	for i in range(len(dataIn)):
+		valeach = np.power(10,dataIn[i]/10)
+		freqSum = freqSum + valeach
+		freqAll = 10* np.log10(freqSum)
+	
+	return freqAll
+	\end{minted}
+
+	kemudian import data menggunakan Python Pandas dan kalkulasi baris pertama hingga frekuensi 12500 Hz (array index 59)
+	
+	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
+data = pd.read_csv('./EARS_Background.csv')
+Lsum = SplAll(data.iloc[0,4:59:2])
+	\end{minted}
+
+	dan nilai Lsum akan menunjukkan nilai mendekati frekuensi ALL pada record (43.99 dB).
+	
+	\newpage
+	Sebagai pembanding, jika nilai spektrum di rata-rata menggunakan fungsi Numpy Python:
+	
+	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
+Lavg = np.average(data.iloc[0,4:59:2])
+	\end{minted}
+
+	dan nilai Lavg akan menunjukkan nilai mendekati hasil pembacaan SLM (24.96 dB)
+	
+	Memperhatikan nilai akumulasi frekuensi (43.99 dB) dan rata-rata frekuensi (24.96 dB),
+	maka dipilih metode rata-rata untuk penentuan nilai SPL pada pengujian Speech dan Wishper.
+	
+	Kesimpulan yang digunakan sebagai nilai loudness latar adalah \textbf{25 dB SPL}.
+	Skrip Python untuk pengolahan data dapat dilihat di tautan:\\
+	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/EARS_Background.ipynb}
+	
+	\subsubsection{Mic}
+	
+	Menyusul
+	
+	\subsubsection{Perbandingan Hasil SLM-Mic}
+	
+	Menyusul
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\newpage
+	\section{Hasil Pengukuran}
+	
+	
 \end{document}
