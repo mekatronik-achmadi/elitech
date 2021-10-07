@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import time
 import numpy as np
+from time import sleep
 import sounddevice as sd
 
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
@@ -18,6 +18,7 @@ class Audio(QThread):
     ofsetR = 115
 
     def getLevel(self, indata, frames, time, status):
+        sleep(0.1)
         self.volL = round(20*np.log10(np.sqrt(np.mean(np.square(indata[:,0]))))+self.ofsetL,2)
         self.volR = round(20*np.log10(np.sqrt(np.mean(np.square(indata[:,1]))))+self.ofsetR,2)
         volNorm = int(np.linalg.norm(indata))
@@ -27,8 +28,7 @@ class Audio(QThread):
         with sd.InputStream(callback=self.getLevel):
             print("Capture Started")
             while True:
-                time.sleep(.001)
-            print("Capture Stopped")
+                pass
 
 class SLM(QDialog):
 
@@ -100,6 +100,7 @@ class SLM(QDialog):
 
         sd.default.device = 2, None
         sd.default.channels = 2, None
+        sd.default.samplerate = 48000
         print(sd.query_devices())
 
         self.spl = Audio()
