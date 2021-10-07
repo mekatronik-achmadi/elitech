@@ -17,10 +17,13 @@ class Audio(QThread):
     ofsetL = 117
     ofsetR = 115
 
+    def rms(self,inarray,offset):
+        return round(20*np.log10(np.sqrt(np.mean(np.square(inarray))))+offset,2)
+
     def getLevel(self, indata, frames, time, status):
         sleep(0.1)
-        self.volL = round(20*np.log10(np.sqrt(np.mean(np.square(indata[:,0]))))+self.ofsetL,2)
-        self.volR = round(20*np.log10(np.sqrt(np.mean(np.square(indata[:,1]))))+self.ofsetR,2)
+        self.volL = self.rms(indata[:,0],self.ofsetL)
+        self.volR = self.rms(indata[:,1],self.ofsetR)
         volNorm = int(np.linalg.norm(indata))
         self.dbSPL.emit(volNorm)
 
