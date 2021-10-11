@@ -12,18 +12,39 @@ from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QProgressBar
 
 class Audio(QThread):
     dbSPL = pyqtSignal(int)
+    sumVolL = 0
+    sumVolR = 0
     volL = 0
     volR = 0
     ofsetL = 117
     ofsetR = 115
+    countAvg = 0
 
     def rms(self,inarray,offset):
-        return round(20*np.log10(np.sqrt(np.mean(np.square(inarray))))+offset,2)
+        dbMean2 = np.mean(np.square(inarray))
+        dbRoot  = np.sqrt(dbMean2)
+        dbLog10 = np.log10(dbRoot)
+        dbDB20  = 20 * dbLog10
+        dbFinal = dbDB20 + offset
+        return round(dbFinal,3)
+
+    def peak(self,inarray):
+        """ The result is weird"""
+        return round(np.max(inarray),2)
 
     def getLevel(self, indata, frames, time, status):
-        sleep(0.1)
-        self.volL = self.rms(indata[:,0],self.ofsetL)
-        self.volR = self.rms(indata[:,1],self.ofsetR)
+        sleep(0.01)        
+        self.sumVolL = self.sumVolL + self.rms(indata[:,0],self.ofsetL)
+        self.sumVolR = self.sumVolR + self.rms(indata[:,1],self.ofsetR)
+        self.countAvg = self.countAvg + 1
+
+        if(self.countAvg==10):
+            self.volL = round(self.sumVolL/10,2)
+            self.volR = round(self.sumVolR/10,2)
+            self.sumVolL = 0
+            self.sumVolR = 0
+            self.countAvg = 0
+
         volNorm = int(np.linalg.norm(indata))
         self.dbSPL.emit(volNorm)
 
@@ -68,7 +89,7 @@ class SLM(QDialog):
         self.vbVolL.addWidget(self.lblVolL0)
         self.vbVolL.addWidget(self.barVolL)
         self.vbVolL.addWidget(self.lblVolLU)
-        
+
         self.lblVolR = QLabel(self)
         self.lblVolR.setText('Volume R')
 

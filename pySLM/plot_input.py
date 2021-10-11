@@ -68,7 +68,7 @@ def audio_callback(indata, frames, time, status):
         print(status, file=sys.stderr)
     # Fancy indexing with mapping creates a (necessary!) copy:
     q.put(indata[::args.downsample, mapping])
-    print(rms(indata[::args.downsample, mapping],117))
+    print(rms(indata[::args.downsample, mapping],0))
 
 def update_plot(frame):
     """This is called by matplotlib for each plot update.
