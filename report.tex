@@ -70,7 +70,8 @@
 
 \begin{document}
 	\thispagestyle{empty}
-	
+	\pagestyle{empty}
+
 	\begin{titlepage}
 		\centering
 		\vfill
@@ -82,19 +83,19 @@
 		\vfill
 		Update: {\today} \currenttime \\
 	\end{titlepage}
-	
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\newpage
 	\tableofcontents
-	
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\newpage
 	\section{Pendahuluan}
-	
+
 	\subsection{Tujuan}
-	
+
 	Tujuan kegiatan pengukuran ini meliputi:
 	\begin{itemize}
 		\item Mengetahui nilai dB SPL untuk Elitech Speech Test menggunakan Headphone
@@ -102,17 +103,17 @@
 		\item Mengetahui nilai dB SPL untuk Elitech Speech Test menggunakan Speaker
 		\item Mengetahui nilai dB SPL untuk Elitech Wishper Test menggunakan Speaker
 	\end{itemize}
-	
+
 	\subsection{Waktu dan Tempat}
-	
+
 	Seluruh kegiatan dilakukan di Ruang Semi-Unechoic Laboratorium Vibrasi dan Akustik
 	Departemen Teknik Fisika Institut Teknologi Sepuluh Nopember Surabaya.
-	
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\newpage
 	\section{Persiapan}
-	
+
 	Kegiatan persiapan disini meliputi:
 	\begin{itemize}
 		\item Modifikasi file Audio.
@@ -125,41 +126,41 @@
 		\item miniDSP EARS, berupa replika telinga karet dengan mikrofon, box DSP, dan antarmuka USB.
 		Website produk:\\
 		\url{https://www.minidsp.com/products/acoustic-measurement/ears-headphone-jig}
-		
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=200pt]{images/ears}
 			\caption{miniDSP EARS}
 		\end{figure}
-	
+
 		Untuk selanjutnya, paket intrumen ini disebut EARS saja.
-		
+
 		\item Focusrite dan Microphone (menyusul)
-		
+
 		Untuk selanjutnya paket instrumen ini disebut Mic saja
-		
+
 		\item Pistonphone Calibrator IEC942 dengan frekuensi 1000Hz dan loudness 114dB SPL sebagai acuan kalibrasi.
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150pt]{images/calibrator}
 			\caption{Calibrator}
 		\end{figure}
-	
+
 		\item SLM Onnosokki sebagai pembanding dalam pengukuran latar.
 		SLM telah terkalibrasi dan telah dicek dengan kalibrator.
 		Untuk selanjutnya paket instrumen ini disebut SLM saja.
-		
+
 		\newpage
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=150pt]{images/slm_calib}
 			\caption{SLM Onnosokki}
 		\end{figure}
-		
-	\end{itemize} 
+
+	\end{itemize}
 
 	\subsection{File Audio}
-	
+
 	Dalam SDCard yang terinstal di unit prototype, tersedia 20 file audio MP3 dengan pembagian:
 	\begin{itemize}
 		\item File nomor 01 hingga 10 untuk Speech Test.
@@ -170,7 +171,7 @@
 	Kemudian kedua file tersebut dibuang \textit{silence} di antara 5 kata pertama.
 	Selanjutnya sisa \textit{track} dibuang.
 	Tujuannya adalah untuk bisa diputar \textit{looping} dengan meminimumkan \textit{silence}.
-	
+
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=250pt]{images/elitech_testAudioSpeech}
@@ -182,10 +183,10 @@
 		\includegraphics[width=250pt]{images/elitech_testAudioWhisperOri}
 		\caption{Track Audio untuk Whisper}
 	\end{figure}
-	
+
 	\newpage
 	Perlu diketahui bahwa Audio Whisper memiliki level bit sangat rendah mendekati silence.
-	
+
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=250pt]{images/elitech_testAudioWhisper}
@@ -193,7 +194,7 @@
 	\end{figure}
 
 	Kemudian melihat analisa frekuensi:
-	
+
 	\begin{figure}[!ht]
 		\centering
 		\begin{subfigure}[b]{0.3\textwidth}
@@ -210,13 +211,13 @@
 	Disini diambil rentang \textit{upper-frequency} adalah 12500 Hz,
 	sedangkan untuk frekuensi rendah diambil semua namun dengan pembobotan \textbf{A-Weighting}
 	untuk mengurangi derau yang umumnya berada di frekuensi rendah.
-	
+
 	\subsection{Kalibrasi}
-	
+
 	Proses kalibrasi dilakukan untuk dua paket intrumen, yaitu EARS dan Mic.
-	
+
 	\subsubsection{EARS}
-	
+
 	Langkah kalibrasi EARS meliputi:
 	\begin{enumerate}
 		\item Lepas semua telinga karet sehingga internal microphone bisa ter-\textit{expose}
@@ -225,7 +226,7 @@
 		\begin{enumerate}
 			\item Untuk sistem operasi GNU/Linux, pastikan input Pulseaudio adalah EARS (bukan internal mic)
 			\item Nyalakan software DSSF3, pilih FFT Analyzer
-			\item Untuk sistem operasi Windows, pilihan input akan tampil disini (pilih EARS).	
+			\item Untuk sistem operasi Windows, pilihan input akan tampil disini (pilih EARS).
 		\end{enumerate}
 		\newpage
 		\item Klik \textbf{Calibration} untuk menampilkan jendela kalibrasi.
@@ -251,23 +252,19 @@
 		\item Beri nama pada \textbf{Microphone Info} dan klik \textbf{New} untuk menyimpan.
 	\end{enumerate}
 
-	\subsubsection{Mic}
-	
-	Menyusul
-	
 	\subsection{Pengukuran latar}
-	
+
 	Pengukuran latar dilakukan di kedua paket instrumen dan dibandingkan dengan hasil ukur SLM.
-	
+
 	\subsubsection{EARS}
-	
+
 	Hasil pengukuran SLM menunjukkan kondisi loudness latar berkisar pada 25 dB.
 	File CSV pengukuran selama 10 detik dapat dilihat disini:
 	\begin{itemize}
 		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B706-210928132100.csv}
 		\item \url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/SNGL-MANU_-B707-210928135234.csv}
 	\end{itemize}
-	
+
 	\newpage
 	\begin{figure}[!ht]
 		\centering
@@ -277,7 +274,7 @@
 
 	Sedangkan untuk EARS digunakan fitur \textbf{Record} pada FFT Analyzer di 1/3 Octave Band
 	dalam durasi 30 detik dengan interval 1 detik setiap sampling.
-	
+
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=200pt]{images/datarec}
@@ -286,20 +283,20 @@
 
 	File CSV hasil pengukuran dapat dilihat di tautan:
 	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/EARS_Background.csv}
-	
+
 	\subsubsection{Perbandingan Hasil SLM-EARS}
-	
+
 	Dengan memperhatikan antara hasil \textit{record} EARS dan SLM,
 	terlihat perbedaan nilai antara pembacaan SLM dan nilai akumulasi frekuensi (ALL).
 	Hal ini disebabkan nilai frekuensi ALL adalah nilai log dari jumlah anti-log setiap spektrum frekuensi.
 	Dalam ekspresi matematis:
-	
+
 	\[L_{sum} = \log (\sum 10^{L_i/10}) \]
-	
+
 	dengan \(L_i\) sebagai nilai dB SPL setiap spektrum frekuensi.
-	
+
 	Untuk mempermudah perhitungan, digunakan fungsi Python Numpy.
-	
+
 	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
 def SplAll(dataIn):
 	freqSum = 0
@@ -307,105 +304,97 @@ def SplAll(dataIn):
 		valeach = np.power(10,dataIn[i]/10)
 		freqSum = freqSum + valeach
 		freqAll = 10* np.log10(freqSum)
-	
+
 	return freqAll
 	\end{minted}
 
 	kemudian import data menggunakan Python Pandas dan kalkulasi baris pertama hingga frekuensi 12500 Hz (array index 59)
-	
+
 	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
 data = pd.read_csv('./EARS_Background.csv')
 Lsum = SplAll(data.iloc[0,4:59:2])
 	\end{minted}
 
 	dan nilai Lsum akan menunjukkan nilai mendekati frekuensi ALL pada record (43.99 dB).
-	
+
 	\newpage
 	Sebagai pembanding, jika nilai spektrum di rata-rata menggunakan fungsi Numpy Python:
-	
+
 	\begin{minted}[frame=lines,framesep=2mm,fontsize=\tiny,bgcolor=LightGray]{python}
 Lavg = np.average(data.iloc[0,4:59:2])
 	\end{minted}
 
 	dan nilai Lavg akan menunjukkan nilai mendekati hasil pembacaan SLM (24.96 dB)
-	
+
 	Memperhatikan nilai akumulasi frekuensi (43.99 dB) dan rata-rata frekuensi (24.96 dB),
 	maka dipilih metode rata-rata untuk penentuan nilai SPL pada pengujian Speech dan Wishper.
-	
+
 	Kesimpulan yang digunakan sebagai nilai loudness latar adalah \textbf{25 dB SPL}.
 	Skrip Python untuk pengolahan data dapat dilihat di tautan:\\
 	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/preparation/EARS_Background.ipynb}
-	
-	\subsubsection{Mic}
-	
-	Menyusul
-	
-	\subsubsection{Perbandingan Hasil SLM-Mic}
-	
-	Menyusul
-	
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\newpage
 	\section{Hasil Pengukuran}
-	
+
 	Berikut dijabarkan hasil pengukuran untuk EARS dan Mic.
-	
+
 	\subsection{EARS}
-	
+
 	\subsubsection{Setup}
-	
+
 	Berikut langkah-langkah persiapan yang dijalankan:
 	\begin{enumerate}
 		\item Siapkan prototype di atas meja.
-		
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=200pt]{images/prototype}
 			\caption{Prototype Test}
 		\end{figure}
-	
+
 		\item Sambungkan koneksi output yang dubutuhkan.
-		
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=200pt]{images/kabel_out}
 			\caption{Koneksi Output}
 		\end{figure}
-	
+
 		\item Nyalakan unit dan pastikan file MP3 yang di \textit{loop-play} sudah sesuai
-		
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=175pt]{images/loopplay}
 			\caption{File Loop-Play}
 		\end{figure}
-	
+
 		\newpage
 		\item Maksimalkan semua volume. Pengujian akan dilakukan dengan knob pengaturan kuantisasi loudness.
-	
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=200pt]{images/loudset}
 			\caption{Pengaturan Kuantisasi Loudness}
 		\end{figure}
-	
+
 		\item Pasang Headphone ke instrumen ukur EARS.
-		
+
 		\begin{figure}[!ht]
 			\centering
 			\includegraphics[width=200pt]{images/headphone}
 			\caption{Pasang Headphone}
 		\end{figure}
-	
+
 		\item Record loudness selama 30 detik dan interval 1 detik untuk pengaturan 60, 55, 50, 45, 40, dan 35.
 	\end{enumerate}
-	
+
 	\subsubsection{Hasil: Speech}
-	
+
 	Kumpulan hasil record dalam format CSV dengan nama file diawali \textbf{speech\_*} dapat dilihat di tautan:\\
 	\url{https://github.com/mekatronik-achmadi/elitech/tree/master/data/ears}
-	
+
 	Pengolahan dilakukan dengan langkah sebagai berikut:
 	\begin{enumerate}
 		\item Setiap file di load ke Python script
@@ -416,7 +405,7 @@ Lavg = np.average(data.iloc[0,4:59:2])
 
 	Skrip pengolahan dapat dilihat di tautan:\\
 	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/ears/DataProcess.ipynb}\\
-	
+
 	Disajikan dalam bentuk tabel (dalam dB SPL):
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -432,10 +421,10 @@ Lavg = np.average(data.iloc[0,4:59:2])
 
 	\newpage
 	\subsubsection{Hasil: Whisper}
-	
+
 	Kumpulan hasil record dalam format CSV dengan nama file diawali \textbf{wishper\_*} dapat dilihat di tautan:\\
 	\url{https://github.com/mekatronik-achmadi/elitech/tree/master/data/ears}
-	
+
 	Pengolahan dilakukan dengan langkah (sama seperti hasil speech sebelumnya) sebagai berikut:
 	\begin{enumerate}
 		\item Setiap file di load ke Python script
@@ -446,7 +435,7 @@ Lavg = np.average(data.iloc[0,4:59:2])
 
 	Skrip pengolahan (sama seperti hasil speech sebelumnya) dapat dilihat di tautan:\\
 	\url{https://github.com/mekatronik-achmadi/elitech/blob/master/data/ears/DataProcess.ipynb}\\
-	
+
 	Disajikan dalam bentuk tabel (dalam dB SPL):
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -468,7 +457,4 @@ Lavg = np.average(data.iloc[0,4:59:2])
 
 	Maka didapati output untuk Wishper \textbf{sangat dekat} dengan loudness latar (SLM terbaca 25 dB).
 	
-	\subsection{Mic}
-	
-	Menyusul
 \end{document}

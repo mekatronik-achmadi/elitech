@@ -1,8 +1,8 @@
 /images_camera
-/report.aux
-/report.log
-/report.out
-/report.pdf
-/report.synctex.gz
-/report.toc
+/*.aux
+/*.log
+/*.out
+/*.pdf
+/*.synctex.gz
+/*.toc
 /_minted*
